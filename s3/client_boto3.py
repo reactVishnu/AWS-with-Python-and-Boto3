@@ -1,10 +1,25 @@
-import boto3 as aws
+import boto3
 
-s3 = aws.client('s3')
-# s3.create_bucket(Bucket='dockvulner-my-first-bucket') # Gonna throw error if name is not unique
+"""
+A low-level client representing Amazon Simple Storage Service (S3)
+"""
+s3 = boto3.client('s3')
 
-# with open('my-bucket.txt', 'w') as file:
-#     file.write('My bucket upload')
 
-# s3.upload_file(Filename='my-bucket.txt', Bucket='dockvulner-my-first-bucket', Key='first_file')
-# s3.download_file(Bucket='dockvulner-my-first-bucket', Key='first_file', Filename='downloaded_file')
+""" For creating a bucket """
+s3.create_bucket(Bucket='dockvulner-my-second-bucket') # Going to throw an error if name is not unique
+s3.create_bucket(Bucket='first-bucket-mac')
+
+
+"""For deleting a bucket"""
+s3.delete_bucket(Bucket="dockvulner-my-second-bucket")
+
+
+"""Uploading a file to a bucket, this creates an object in S3 storage."""
+s3.upload_file(Filename='my-bucket.txt', Bucket='first-bucket-mac', Key='first_file')
+
+"""Downloading a file from a bucket"""
+s3.download_file(Bucket='first-bucket-mac', Key='first_file', Filename='downloaded_file')
+
+"""For deleting an object or deleting an uploaded file"""
+s3.delete_object(Bucket='first-bucket-mac', Key='first_file')
