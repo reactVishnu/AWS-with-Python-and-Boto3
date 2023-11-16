@@ -57,3 +57,10 @@ For terminating an instance
 """
 client.terminate_instances(InstanceIds=['i-081cfff521b6ce0e8'])
 print(description['Reservations'][0]['Instances'][0]['State'])
+
+
+"""
+For connecting to Ec2 instance through SSH
+1.) chmod 400 ~/Downloads/first-key-pair.pem
+2.) ssh -i ~/Downloads/first-key-pair.pem root@172.31.0.126
+"""
